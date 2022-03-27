@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		10D6EA1927F0CB05004018B4 /* VKDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D6EA1827F0CB05004018B4 /* VKDelegate.swift */; };
+		10E2F7F927F0DC4E00D8E2B1 /* APIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2F7F827F0DC4E00D8E2B1 /* APIWorker.swift */; };
 		10E37F5F27F0C4620044703E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E37F5E27F0C4620044703E /* AppDelegate.swift */; };
 		10E37F6127F0C4620044703E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E37F6027F0C4620044703E /* SceneDelegate.swift */; };
 		10E37F6327F0C4620044703E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E37F6227F0C4620044703E /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		035359DB36A10639A6278793 /* Pods_TestAppGallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestAppGallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D6EA1827F0CB05004018B4 /* VKDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKDelegate.swift; sourceTree = "<group>"; };
+		10E2F7F827F0DC4E00D8E2B1 /* APIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWorker.swift; sourceTree = "<group>"; };
 		10E37F5B27F0C4620044703E /* TestAppGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestAppGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E37F5E27F0C4620044703E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10E37F6027F0C4620044703E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			children = (
 				10E37F5E27F0C4620044703E /* AppDelegate.swift */,
 				10D6EA1827F0CB05004018B4 /* VKDelegate.swift */,
+				10E2F7F827F0DC4E00D8E2B1 /* APIWorker.swift */,
 				10E37F6027F0C4620044703E /* SceneDelegate.swift */,
 				10E37F6227F0C4620044703E /* ViewController.swift */,
 				10E37F6427F0C4620044703E /* Main.storyboard */,
@@ -213,6 +216,7 @@
 				10E37F5F27F0C4620044703E /* AppDelegate.swift in Sources */,
 				10E37F6127F0C4620044703E /* SceneDelegate.swift in Sources */,
 				10D6EA1927F0CB05004018B4 /* VKDelegate.swift in Sources */,
+				10E2F7F927F0DC4E00D8E2B1 /* APIWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,7 +17,6 @@ class VKDelegate: SwiftyVKDelegate {
         VK.setUp(appId: appID, delegate: self)
     }
     
-    
     func vkNeedsScopes(for sessionId: String) -> Scopes {
         return scopes
     }
@@ -27,6 +26,7 @@ class VKDelegate: SwiftyVKDelegate {
             rootController.present(viewController, animated: true)
         }
     }
+    
     
     
 }
