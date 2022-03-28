@@ -6,10 +6,9 @@
 //
 
 import UIKit
+import SwiftyVK
 
-class ViewController: UIViewController {
-    
-    let apiWorker = APIWorker()
+class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     
@@ -18,17 +17,15 @@ class ViewController: UIViewController {
         setupButtonAppearance()
     }
     
+    
     @IBAction func loginButtonPressed(_ sender: Any) {
-        apiWorker.authorize()
+        
     }
-
-}
-
-extension ViewController {
+    
     private func setupButtonAppearance() {
         loginButton.backgroundColor = .black
         loginButton.layer.cornerRadius = 8
         loginButton.clipsToBounds = true
     }
-}
 
+}

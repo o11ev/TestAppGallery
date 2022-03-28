@@ -11,7 +11,7 @@ import SwiftyVK
 class VKDelegate: SwiftyVKDelegate {
     
     let appID = "8117674"
-    let scopes: Scopes = [.offline,.friends,.wall,.photos,.audio,.video,.docs,.market,.email]
+    let scopes: Scopes = [.offline,.photos]
     
     init() {
         VK.setUp(appId: appID, delegate: self)
@@ -27,6 +27,15 @@ class VKDelegate: SwiftyVKDelegate {
         }
     }
     
+    func vkTokenCreated(for sessionId: String, info: [String : String]) {
+        print("token created in session \(sessionId) with info \(info)")
+    }
     
+    func vkTokenUpdated(for sessionId: String, info: [String : String]) {
+        print("token updated in session \(sessionId) with info \(info)")
+    }
     
+    func vkTokenRemoved(for sessionId: String) {
+        print("token removed in session \(sessionId)")
+    }
 }
