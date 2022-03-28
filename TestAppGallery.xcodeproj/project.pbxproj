@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		100FA4BE27F2198800F00568 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100FA4BD27F2198800F00568 /* NavigationViewController.swift */; };
+		100FA4C227F22C0900F00568 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100FA4C127F22C0900F00568 /* PhotoCell.swift */; };
 		10D6EA1927F0CB05004018B4 /* VKDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D6EA1827F0CB05004018B4 /* VKDelegate.swift */; };
 		10E2F7F927F0DC4E00D8E2B1 /* APIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2F7F827F0DC4E00D8E2B1 /* APIWorker.swift */; };
 		10E2F7FC27F0EB1300D8E2B1 /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E2F7FB27F0EB1300D8E2B1 /* PhotosCollectionViewController.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		035359DB36A10639A6278793 /* Pods_TestAppGallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestAppGallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		100FA4BD27F2198800F00568 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		100FA4C127F22C0900F00568 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		10D6EA1827F0CB05004018B4 /* VKDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKDelegate.swift; sourceTree = "<group>"; };
 		10E2F7F827F0DC4E00D8E2B1 /* APIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWorker.swift; sourceTree = "<group>"; };
 		10E2F7FB27F0EB1300D8E2B1 /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				10E37F6227F0C4620044703E /* LoginViewController.swift */,
 				100FA4BD27F2198800F00568 /* NavigationViewController.swift */,
 				10E2F7FB27F0EB1300D8E2B1 /* PhotosCollectionViewController.swift */,
+				100FA4C127F22C0900F00568 /* PhotoCell.swift */,
 				10E37F6427F0C4620044703E /* Main.storyboard */,
 				10E37F6927F0C4630044703E /* LaunchScreen.storyboard */,
 				10E37F6727F0C4630044703E /* Assets.xcassets */,
@@ -230,6 +233,7 @@
 				10E37F5F27F0C4620044703E /* AppDelegate.swift in Sources */,
 				10E37F6127F0C4620044703E /* SceneDelegate.swift in Sources */,
 				10E2F7FC27F0EB1300D8E2B1 /* PhotosCollectionViewController.swift in Sources */,
+				100FA4C227F22C0900F00568 /* PhotoCell.swift in Sources */,
 				10D6EA1927F0CB05004018B4 /* VKDelegate.swift in Sources */,
 				100FA4BE27F2198800F00568 /* NavigationViewController.swift in Sources */,
 				10E2F7F927F0DC4E00D8E2B1 /* APIWorker.swift in Sources */,
