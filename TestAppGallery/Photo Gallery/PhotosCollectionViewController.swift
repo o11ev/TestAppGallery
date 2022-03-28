@@ -19,7 +19,6 @@ class PhotosCollectionViewController: UICollectionViewController {
     }
     
     private func loadPhotos() {
-        
     }
 
     /*
@@ -59,6 +58,7 @@ class PhotosCollectionViewController: UICollectionViewController {
     
 }
 
+// MARK: Set up photo grid
 extension PhotosCollectionViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

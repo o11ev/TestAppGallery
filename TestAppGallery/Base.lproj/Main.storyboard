@@ -97,6 +97,7 @@ Gallery</string>
                                 </collectionViewCellContentView>
                                 <connections>
                                     <outlet property="photoImageView" destination="g9p-iG-uPm" id="s0t-jn-TjX"/>
+                                    <segue destination="fWA-p6-ZyJ" kind="show" id="0pc-E2-si9"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -116,7 +117,48 @@ Gallery</string>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VWe-Da-8ot" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2566.666666666667" y="83.705357142857139"/>
+            <point key="canvasLocation" x="2583" y="84"/>
+        </scene>
+        <!--Date-->
+        <scene sceneID="i8w-Dd-QOq">
+            <objects>
+                <viewController id="fWA-p6-ZyJ" customClass="PhotoViewController" customModule="TestAppGallery" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UBr-5n-hfw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RZE-vG-o3e">
+                                <rect key="frame" x="0.0" y="241" width="414" height="414"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="RZE-vG-o3e" secondAttribute="height" multiplier="1:1" id="Kao-1h-TdH"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="oQS-AQ-FkN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RZE-vG-o3e" firstAttribute="centerY" secondItem="UBr-5n-hfw" secondAttribute="centerY" id="21A-kW-2hb"/>
+                            <constraint firstItem="RZE-vG-o3e" firstAttribute="leading" secondItem="oQS-AQ-FkN" secondAttribute="leading" id="VbJ-kv-3Nf"/>
+                            <constraint firstItem="oQS-AQ-FkN" firstAttribute="trailing" secondItem="RZE-vG-o3e" secondAttribute="trailing" id="bUQ-oA-Q3w"/>
+                            <constraint firstItem="RZE-vG-o3e" firstAttribute="centerX" secondItem="UBr-5n-hfw" secondAttribute="centerX" id="zON-D9-PXM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Date" id="M2M-FQ-Rlx">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.arrow.up" catalog="system" id="2fD-yv-xpi">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="exportButton:" destination="fWA-p6-ZyJ" id="V1x-H1-lnW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="photoImageView" destination="RZE-vG-o3e" id="iTE-Bg-A8b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8My-v5-ngh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3505.7971014492755" y="83.705357142857139"/>
         </scene>
         <!--Mobile Up Gallery-->
         <scene sceneID="ERW-cO-h0M">
@@ -139,8 +181,12 @@ Gallery</string>
         </scene>
     </scenes>
     <resources>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemMintColor">
             <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
