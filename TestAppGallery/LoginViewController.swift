@@ -41,7 +41,6 @@ class LoginViewController: UIViewController {
         VK.sessions.default.logIn(
             onSuccess: { info in
                 print("SwiftyVK: success authorize with", info)
-                self.loadPhotos()
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.goToPhotoGallery()
@@ -62,7 +61,7 @@ class LoginViewController: UIViewController {
             self.response = json
             
             DispatchQueue.main.async { [weak self] in
-                print(self?.response ?? "No load photos")
+              print(self?.response ?? "No load photos")
             }
         }
         .onError { error in
@@ -72,6 +71,7 @@ class LoginViewController: UIViewController {
     }
     
     private func goToPhotoGallery() {
+        self.loadPhotos()
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
         
         let photoGalleryVC = storyboard.instantiateViewController(withIdentifier: "NavigationVC") as! NavigationViewController
