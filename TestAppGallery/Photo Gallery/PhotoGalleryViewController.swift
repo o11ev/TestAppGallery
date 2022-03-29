@@ -12,24 +12,20 @@ class PhotoGalleryViewController: UICollectionViewController {
    
     private let reuseIdentifier = "photoCell"
     private let itemsPerRow: CGFloat = 2
-    private let sectionInserts = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+    private let sectionInserts = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 2)
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    private func loadPhotos() {
-    }
-
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        let image = UIImage(named: "chevron.backward")
+        let backItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backItem
+        navigationItem.backBarButtonItem?.tintColor = .black
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -44,6 +40,7 @@ class PhotoGalleryViewController: UICollectionViewController {
         return 10
     }
 
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
         
@@ -57,7 +54,7 @@ class PhotoGalleryViewController: UICollectionViewController {
     
 }
 
-// MARK: Set up photo grid
+    // MARK: Set up photo grid
 extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -19,6 +19,13 @@ class LoginViewController: UIViewController {
         setupButtonAppearance()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+        if VK.sessions.default.accessToken != nil {
+            goToPhotoGallery()
+        }
+    }
+    
     @IBAction func loginButtonPressed(_ sender: Any) {
         authorize()
     }
@@ -30,6 +37,7 @@ class LoginViewController: UIViewController {
     }
     
     private func authorize() {
+        if VK.sessions.default.accessToken == nil {
         VK.sessions.default.logIn(
             onSuccess: { info in
                 print("SwiftyVK: success authorize with", info)
@@ -43,6 +51,7 @@ class LoginViewController: UIViewController {
                 print("SwiftyVK: authorize failed with", error)
             }
         )
+        }
     }
     
     private func loadPhotos() {
@@ -53,11 +62,11 @@ class LoginViewController: UIViewController {
             self.response = json
             
             DispatchQueue.main.async { [weak self] in
-                print(self?.response ?? "no load photos")
+                print(self?.response ?? "No load photos")
             }
         }
         .onError { error in
-            print("error", error)
+            print("Error", error)
         }
         .send()
     }
@@ -66,6 +75,8 @@ class LoginViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
         
         let photoGalleryVC = storyboard.instantiateViewController(withIdentifier: "NavigationVC") as! NavigationViewController
+        
+        photoGalleryVC.modalPresentationStyle = .fullScreen
         
         present(photoGalleryVC, animated: true)
     }

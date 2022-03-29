@@ -9,15 +9,10 @@ import UIKit
 
 class PhotoViewController: UIViewController {
     
-    
     @IBOutlet weak var photoImageView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-
-        // Do any additional setup after loading the view.
     }
     
 
