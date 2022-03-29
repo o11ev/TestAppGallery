@@ -8,7 +8,7 @@
 import UIKit
 import SwiftyVK
 
-class PhotosCollectionViewController: UICollectionViewController {
+class PhotoGalleryViewController: UICollectionViewController {
    
     private let reuseIdentifier = "photoCell"
     private let itemsPerRow: CGFloat = 2
@@ -50,7 +50,6 @@ class PhotosCollectionViewController: UICollectionViewController {
         return cell
     }
     
-    
     @IBAction func logOutButton(_ sender: UIBarButtonItem) {
         VK.sessions.default.logOut()
         self.dismiss(animated: true)
@@ -59,7 +58,7 @@ class PhotosCollectionViewController: UICollectionViewController {
 }
 
 // MARK: Set up photo grid
-extension PhotosCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             

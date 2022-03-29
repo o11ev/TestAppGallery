@@ -38,7 +38,6 @@ Gallery</string>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B9B-mz-lJY"/>
-                                    <segue destination="pTv-8k-JlU" kind="presentation" modalPresentationStyle="fullScreen" id="rhL-qH-U5R"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -64,7 +63,7 @@ Gallery</string>
         <!--Mobile Up Gallery-->
         <scene sceneID="76G-7o-qTr">
             <objects>
-                <collectionViewController title="Mobile Up Gallery" id="gDG-6a-jUB" customClass="PhotosCollectionViewController" customModule="TestAppGallery" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController title="Mobile Up Gallery" id="gDG-6a-jUB" customClass="PhotoGalleryViewController" customModule="TestAppGallery" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="cIR-lS-0kt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
