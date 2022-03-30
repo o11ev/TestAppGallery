@@ -13,8 +13,6 @@ class PhotoGalleryViewController: UICollectionViewController {
     let photoData = PhotoManager.shared
    
     private let reuseIdentifier = "photoCell"
-    private let itemsPerRow: CGFloat = 2
-    private let sectionInserts = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 2)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,23 +60,17 @@ class PhotoGalleryViewController: UICollectionViewController {
     // MARK: Set up photo grid
 extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            
-            let paddingWidth = sectionInserts.left * (itemsPerRow + 1)
-            let availableWidth = collectionView.frame.width - paddingWidth
-            let widthPerItem = availableWidth / itemsPerRow
-            
-            return CGSize(width: widthPerItem, height: widthPerItem)
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return sectionInserts
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return sectionInserts.left
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            return sectionInserts.left
-        }
+    
+        let width = UIScreen.main.bounds.width / 2 - 1
+        let height = UIScreen.main.bounds.width / 2
+        return CGSize( width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat{
+        return 2
+    }
 }
