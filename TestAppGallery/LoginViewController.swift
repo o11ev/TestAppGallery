@@ -12,8 +12,6 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     
-    var response: Response = .init(items: [], count: 0)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButtonAppearance()
@@ -53,25 +51,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    private func loadPhotos() {
-        VK.API.Photos.get([.ownerId: "-128666765",
-                           .albumId: "266276915"])
-        .onSuccess { data in
-            let json = try JSONDecoder().decode(Response.self, from: data)
-            self.response = json
-            
-            DispatchQueue.main.async { [weak self] in
-              print(self?.response ?? "No load photos")
-            }
-        }
-        .onError { error in
-            print("Error", error)
-        }
-        .send()
-    }
-    
     private func goToPhotoGallery() {
-        self.loadPhotos()
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
         
         let photoGalleryVC = storyboard.instantiateViewController(withIdentifier: "NavigationVC") as! NavigationViewController

@@ -7,21 +7,21 @@
 
 import Foundation
 
-struct DataModel: Decodable {
+struct PhotoData: Decodable {
     var response: Response
 }
 
 struct Response: Decodable {
-    var items: [Item]
+    var items: [Items]
     var count: Int
 }
 
-struct Item: Decodable {
+struct Items: Decodable {
     var date: Int
-    var sizes: [Size]
+    var sizes: [Sizes]
 }
 
-struct Size: Decodable {
+struct Sizes: Decodable {
     var url: String
     var type: String
 }
