@@ -9,7 +9,7 @@ import UIKit
 import SwiftyVK
 
 class LoginViewController: UIViewController {
-    
+        
     @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
@@ -52,6 +52,7 @@ class LoginViewController: UIViewController {
     }
     
     private func goToPhotoGallery() {
+        
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
         
         let photoGalleryVC = storyboard.instantiateViewController(withIdentifier: "NavigationVC") as! NavigationViewController

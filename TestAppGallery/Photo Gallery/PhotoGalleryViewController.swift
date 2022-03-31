@@ -10,13 +10,38 @@ import SwiftyVK
 
 class PhotoGalleryViewController: UICollectionViewController {
     
-    let photoData = PhotoManager.shared
-   
+    @IBOutlet var photoCollectionView: UICollectionView!
+    
+    var albumData: Response = .init(items: [], count: 0)
+    
     private let reuseIdentifier = "photoCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        photoData.fetchPhoto()
+        self.loadAlbum()
+
+    }
+    
+    func loadAlbum() {
+        VK.API.Photos.get([.ownerId: "-128666765",
+                           .albumId: "266276915"])
+        .onSuccess { [self] json in
+            self.albumData = try JSONDecoder().decode(Response.self, from: json)
+            print("фотки загружены в количестве \(albumData.count) штук")
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.photoCollectionView.reloadData()
+            }
+        }
+        .onError { error in
+            //TODO: Обработать ошибку
+            
+//            DispatchQueue.main.async { [weak self] in
+             //TODO: Обработать ошибку
+//            }
+            print("Error", error)
+        }
+        .send()
     }
     
     // MARK: - Navigation
@@ -31,19 +56,25 @@ class PhotoGalleryViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 10
+        print("Photo count: \(albumData.count)")
+ 
+        return albumData.count
     }
 
-    
+    // возвращает ячейку
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
+        
+        let imageUrl = albumData.items[indexPath.row].sizes.first {$0.type == "y"}?.url
+
+        if let unwrapedImageUrl = imageUrl {
+            cell.loadImage(from: unwrapedImageUrl)
+        }
         
         return cell
     }
@@ -60,10 +91,9 @@ class PhotoGalleryViewController: UICollectionViewController {
     // MARK: Set up photo grid
 extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    
         let width = UIScreen.main.bounds.width / 2 - 1
         let height = UIScreen.main.bounds.width / 2
-        return CGSize( width: width, height: height)
+        return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
