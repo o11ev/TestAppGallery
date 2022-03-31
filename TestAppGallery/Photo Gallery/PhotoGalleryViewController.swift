@@ -19,8 +19,8 @@ class PhotoGalleryViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadAlbum()
-
     }
+    
     
     func loadAlbum() {
         VK.API.Photos.get([.ownerId: "-128666765",
@@ -51,6 +51,12 @@ class PhotoGalleryViewController: UICollectionViewController {
         let backItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backItem
         navigationItem.backBarButtonItem?.tintColor = .black
+        
+        if segue.identifier == "pickPhotoSegue" {
+            let photoVC = segue.destination as! PhotoViewController
+            let cell = sender as! PhotoCell
+            photoVC.image = cell.photoImageView.image!
+        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -104,3 +110,4 @@ extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
         return 2
     }
 }
+

@@ -86,7 +86,7 @@
 			children = (
 				10E37F6227F0C4620044703E /* LoginViewController.swift */,
 				10EAA3ED27F2574F00BB3874 /* Photo Gallery */,
-				10EAA3EE27F2577500BB3874 /* Photo Details */,
+				10EAA3EE27F2577500BB3874 /* Photo */,
 				10E37F6427F0C4620044703E /* Main.storyboard */,
 				10E37F6927F0C4630044703E /* LaunchScreen.storyboard */,
 				10E37F6727F0C4630044703E /* Assets.xcassets */,
@@ -108,12 +108,12 @@
 			path = "Photo Gallery";
 			sourceTree = "<group>";
 		};
-		10EAA3EE27F2577500BB3874 /* Photo Details */ = {
+		10EAA3EE27F2577500BB3874 /* Photo */ = {
 			isa = PBXGroup;
 			children = (
 				10AFE8E927F24586006DDD9C /* PhotoViewController.swift */,
 			);
-			path = "Photo Details";
+			path = Photo;
 			sourceTree = "<group>";
 		};
 		82A764A0E67C711625C932C2 /* Pods */ = {
