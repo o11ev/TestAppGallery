@@ -20,7 +20,6 @@ class PhotoViewController: UIViewController {
 
     
     @IBAction func exportButton(_ sender: UIBarButtonItem) {
-        
         guard let imageToShare = photoImageView.image else { return }
         
         let shareController = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil)
@@ -30,10 +29,6 @@ class PhotoViewController: UIViewController {
                 print("Успешно")
             }
         }
-        
         present(shareController, animated: true, completion: nil )
-        
     }
-    
-    
 }

@@ -46,19 +46,31 @@ class LoginViewController: UIViewController {
             },
             onError: { error in
                 print("SwiftyVK: authorize failed with", error)
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.showAlert(title: "Ошибка авторизации",
+                                   message: "\(error)")
+                }
             }
         )
         }
     }
-    
+  
+// MARK: - Navigation
     private func goToPhotoGallery() {
-        
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
-        
         let photoGalleryVC = storyboard.instantiateViewController(withIdentifier: "NavigationVC") as! NavigationViewController
-        
         photoGalleryVC.modalPresentationStyle = .fullScreen
-        
         present(photoGalleryVC, animated: true)
+    }
+}
+
+// MARK: - Alert Controller
+extension LoginViewController {
+    private func showAlert(title: String,message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }

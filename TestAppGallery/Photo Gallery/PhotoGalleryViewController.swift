@@ -36,18 +36,16 @@ class PhotoGalleryViewController: UICollectionViewController {
         }
     }
 
-    // MARK: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("Photo count: \(albumData.count)")
         return albumData.count
     }
 
-    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
         
@@ -56,41 +54,39 @@ class PhotoGalleryViewController: UICollectionViewController {
         if let unwrapedImageUrl = imageUrl {
             cell.loadImage(from: unwrapedImageUrl)
         }
-        
         return cell
     }
     
-    // MARK: Log out button
+    // MARK: - Log out button
     @IBAction func logOutButton(_ sender: UIBarButtonItem) {
         VK.sessions.default.logOut()
         self.dismiss(animated: true)
     }
     
-    // MARK: Load data from VK
+    // MARK: - Load data from VK
     private func loadAlbum() {
         VK.API.Photos.get([.ownerId: "-128666765",
                            .albumId: "266276915"])
         .onSuccess { [self] json in
             self.albumData = try JSONDecoder().decode(Response.self, from: json)
-            print("фотки загружены в количестве \(albumData.count) штук")
             
             DispatchQueue.main.async { [weak self] in
                 self?.photoCollectionView.reloadData()
             }
         }
         .onError { error in
-            //TODO: Обработать ошибку
             
-//            DispatchQueue.main.async { [weak self] in
-             //TODO: Обработать ошибку
-//            }
+            DispatchQueue.main.async { [weak self] in
+                self?.showAlert(title: "Ошибка загрузки фото",
+                          message: "\(error)")
+            }
             print("Error", error)
         }
         .send()
     }
 }
 
-    // MARK: Set up photo grid
+// MARK: - Set up photo grid
 extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = UIScreen.main.bounds.width / 2 - 1
@@ -107,3 +103,12 @@ extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - Alert Controller
+extension PhotoGalleryViewController {
+    private func showAlert(title: String,message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+}
