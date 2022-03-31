@@ -21,19 +21,29 @@ class PhotoGalleryViewController: UICollectionViewController {
         self.loadAlbum()
     }
     
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let imageUrl = albumData.items[indexPath.row].sizes.first {$0.type == "y"}?.url
+        
+        let imageDate = albumData.items[indexPath.row].date
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        let photoVC = storyboard.instantiateViewController(identifier: "DetailedPhotoVC") as! PhotoViewController
+        
+        
         let image = UIImage(named: "chevron.backward")
         let backItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backItem
         navigationItem.backBarButtonItem?.tintColor = .black
         
-        if segue.identifier == "pickPhotoSegue" {
-            let photoVC = segue.destination as! PhotoViewController
-            let cell = sender as! PhotoCell
-            guard let image = cell.photoImageView.image else { return }
-            photoVC.image = image
+       
+        // тут передаем данные
+        if let unwrapedImageUrl = imageUrl {
+            photoVC.imageUrl = unwrapedImageUrl
+            photoVC.imageDateUTS = Double(imageDate)
         }
+        
+        navigationController?.pushViewController(photoVC, animated: true)
     }
 
     // MARK: - UICollectionViewDataSource
@@ -47,12 +57,12 @@ class PhotoGalleryViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! GalleryCollectionViewCell
         
         let imageUrl = albumData.items[indexPath.row].sizes.first {$0.type == "y"}?.url
 
         if let unwrapedImageUrl = imageUrl {
-            cell.loadImage(from: unwrapedImageUrl)
+            cell.photoImageView.loadImage(from: unwrapedImageUrl)
         }
         return cell
     }
@@ -74,7 +84,7 @@ class PhotoGalleryViewController: UICollectionViewController {
                 self?.photoCollectionView.reloadData()
             }
         }
-        .onError { error in
+        .onError {error in
             
             DispatchQueue.main.async { [weak self] in
                 self?.showAlert(title: "Ошибка загрузки фото",

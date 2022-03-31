@@ -75,34 +75,27 @@ Gallery</string>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="PvK-kf-Wlx" customClass="PhotoCell" customModule="TestAppGallery" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="PvK-kf-Wlx" customClass="GalleryCollectionViewCell" customModule="TestAppGallery" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uMA-3t-IuS">
                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g9p-iG-uPm">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g9p-iG-uPm" customClass="PhotoImageView" customModule="TestAppGallery" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         </imageView>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="JFJ-vo-SFh">
-                                            <rect key="frame" x="54" y="54" width="20" height="20"/>
-                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="g9p-iG-uPm" secondAttribute="bottom" id="EQq-gF-ce1"/>
-                                        <constraint firstItem="JFJ-vo-SFh" firstAttribute="centerY" secondItem="uMA-3t-IuS" secondAttribute="centerY" id="cTC-4m-dfM"/>
                                         <constraint firstAttribute="trailing" secondItem="g9p-iG-uPm" secondAttribute="trailing" id="kp1-oj-MHo"/>
                                         <constraint firstItem="g9p-iG-uPm" firstAttribute="leading" secondItem="uMA-3t-IuS" secondAttribute="leading" id="oZ8-7Q-jYJ"/>
                                         <constraint firstItem="g9p-iG-uPm" firstAttribute="top" secondItem="uMA-3t-IuS" secondAttribute="top" id="uLW-f3-fgf"/>
-                                        <constraint firstItem="JFJ-vo-SFh" firstAttribute="centerX" secondItem="uMA-3t-IuS" secondAttribute="centerX" id="xUA-PY-S2d"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
-                                    <outlet property="activityIndicator" destination="JFJ-vo-SFh" id="b9d-Hj-Qf2"/>
                                     <outlet property="photoImageView" destination="g9p-iG-uPm" id="s0t-jn-TjX"/>
-                                    <segue destination="fWA-p6-ZyJ" kind="show" identifier="pickPhotoSegue" id="0pc-E2-si9"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -130,12 +123,12 @@ Gallery</string>
         <!--Date-->
         <scene sceneID="i8w-Dd-QOq">
             <objects>
-                <viewController id="fWA-p6-ZyJ" customClass="PhotoViewController" customModule="TestAppGallery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailedPhotoVC" id="fWA-p6-ZyJ" customClass="PhotoViewController" customModule="TestAppGallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UBr-5n-hfw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RZE-vG-o3e">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RZE-vG-o3e" customClass="PhotoImageView" customModule="TestAppGallery" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="241" width="414" height="414"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
