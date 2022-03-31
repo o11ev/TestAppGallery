@@ -20,9 +20,9 @@ class PhotoCell: UICollectionViewCell {
     func loadImage(from imageUrl: String) {
         
         let url = URL(string: imageUrl)
-
+        
         URLSession.shared.dataTask(with: url!) { (data, respones, error) in
-    
+            
             if error != nil {
                 //TODO: Обработать ошибку
                 return

@@ -21,8 +21,53 @@ class PhotoGalleryViewController: UICollectionViewController {
         self.loadAlbum()
     }
     
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let image = UIImage(named: "chevron.backward")
+        let backItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backItem
+        navigationItem.backBarButtonItem?.tintColor = .black
+        
+        if segue.identifier == "pickPhotoSegue" {
+            let photoVC = segue.destination as! PhotoViewController
+            let cell = sender as! PhotoCell
+            guard let image = cell.photoImageView.image else { return }
+            photoVC.image = image
+        }
+    }
+
+    // MARK: UICollectionViewDataSource
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
+
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("Photo count: \(albumData.count)")
+        return albumData.count
+    }
+
     
-    func loadAlbum() {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
+        
+        let imageUrl = albumData.items[indexPath.row].sizes.first {$0.type == "y"}?.url
+
+        if let unwrapedImageUrl = imageUrl {
+            cell.loadImage(from: unwrapedImageUrl)
+        }
+        
+        return cell
+    }
+    
+    // MARK: Log out button
+    @IBAction func logOutButton(_ sender: UIBarButtonItem) {
+        VK.sessions.default.logOut()
+        self.dismiss(animated: true)
+    }
+    
+    // MARK: Load data from VK
+    private func loadAlbum() {
         VK.API.Photos.get([.ownerId: "-128666765",
                            .albumId: "266276915"])
         .onSuccess { [self] json in
@@ -43,55 +88,6 @@ class PhotoGalleryViewController: UICollectionViewController {
         }
         .send()
     }
-    
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let image = UIImage(named: "chevron.backward")
-        let backItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem = backItem
-        navigationItem.backBarButtonItem?.tintColor = .black
-        
-        if segue.identifier == "pickPhotoSegue" {
-            let photoVC = segue.destination as! PhotoViewController
-            let cell = sender as! PhotoCell
-            photoVC.image = cell.photoImageView.image!
-        }
-    }
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("Photo count: \(albumData.count)")
- 
-        return albumData.count
-    }
-
-    // возвращает ячейку
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
-        
-        let imageUrl = albumData.items[indexPath.row].sizes.first {$0.type == "y"}?.url
-
-        if let unwrapedImageUrl = imageUrl {
-            cell.loadImage(from: unwrapedImageUrl)
-        }
-        
-        return cell
-    }
-    
-    // MARK: Log Out Button
-    
-    @IBAction func logOutButton(_ sender: UIBarButtonItem) {
-        VK.sessions.default.logOut()
-        self.dismiss(animated: true)
-    }
-    
 }
 
     // MARK: Set up photo grid
