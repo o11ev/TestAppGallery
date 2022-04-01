@@ -61,8 +61,18 @@
 			children = (
 				10E37F5E27F0C4620044703E /* AppDelegate.swift */,
 				10E37F6027F0C4620044703E /* SceneDelegate.swift */,
+				10D6EA1827F0CB05004018B4 /* VKDelegate.swift */,
+				1038C91D27F4BFDB008DA0EF /* PhotoData.swift */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		10DDD64527F6F42D002395A6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				10E37F6227F0C4620044703E /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		10E37F5227F0C4620044703E = {
@@ -86,16 +96,14 @@
 		10E37F5D27F0C4620044703E /* TestAppGallery */ = {
 			isa = PBXGroup;
 			children = (
-				10E37F6227F0C4620044703E /* LoginViewController.swift */,
+				100FA4C027F2236600F00568 /* SupportingFiles */,
+				10DDD64527F6F42D002395A6 /* Login */,
 				10EAA3ED27F2574F00BB3874 /* Photo Gallery */,
 				10EAA3EE27F2577500BB3874 /* Photo */,
 				10E37F6427F0C4620044703E /* Main.storyboard */,
 				10E37F6927F0C4630044703E /* LaunchScreen.storyboard */,
 				10E37F6727F0C4630044703E /* Assets.xcassets */,
 				10E37F6C27F0C4630044703E /* Info.plist */,
-				1038C91D27F4BFDB008DA0EF /* PhotoData.swift */,
-				10D6EA1827F0CB05004018B4 /* VKDelegate.swift */,
-				100FA4C027F2236600F00568 /* SupportingFiles */,
 			);
 			path = TestAppGallery;
 			sourceTree = "<group>";

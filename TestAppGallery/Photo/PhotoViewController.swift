@@ -20,17 +20,6 @@ class PhotoViewController: UIViewController {
         self.title = getDate(date: imageDateUTS) ?? "No date"
     }
     
-    private func getDate(date: Double?) -> String? {
-        if let unwrapedDate = date {
-            let unwrapedDate = Date(timeIntervalSince1970: unwrapedDate)
-            let formater = DateFormatter()
-            formater.dateFormat = "dd MMMM YYYY"
-            return formater.string(from: unwrapedDate)
-        }
-        return nil
-    }
-    
-    
     @IBAction func exportButton(_ sender: UIBarButtonItem) {
         guard let imageToShare = photoImageView.image else { return }
         
@@ -42,5 +31,15 @@ class PhotoViewController: UIViewController {
             }
         }
         present(shareController, animated: true, completion: nil )
+    }
+    
+    private func getDate(date: Double?) -> String? {
+        if let unwrapedDate = date {
+            let unwrapedDate = Date(timeIntervalSince1970: unwrapedDate)
+            let formater = DateFormatter()
+            formater.dateFormat = "dd MMMM YYYY"
+            return formater.string(from: unwrapedDate)
+        }
+        return nil
     }
 }

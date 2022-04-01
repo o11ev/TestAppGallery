@@ -21,23 +21,17 @@ class PhotoGalleryViewController: UICollectionViewController {
         self.loadAlbum()
     }
     
+    // MARK: - Set up next screen
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let imageUrl = albumData.items[indexPath.row].sizes.first {$0.type == "y"}?.url
-        
         let imageDate = albumData.items[indexPath.row].date
         
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
         let photoVC = storyboard.instantiateViewController(identifier: "DetailedPhotoVC") as! PhotoViewController
         
+        setUpBar()
         
-        let image = UIImage(named: "chevron.backward")
-        let backItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem = backItem
-        navigationItem.backBarButtonItem?.tintColor = .black
-        
-       
-        // тут передаем данные
         if let unwrapedImageUrl = imageUrl {
             photoVC.imageUrl = unwrapedImageUrl
             photoVC.imageDateUTS = Double(imageDate)
@@ -93,6 +87,14 @@ class PhotoGalleryViewController: UICollectionViewController {
             print("Error", error)
         }
         .send()
+    }
+    
+    // MARK: - Set up tab bar in next screen
+    private func setUpBar() {
+        let image = UIImage(named: "chevron.backward")
+        let backItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backItem
+        navigationItem.backBarButtonItem?.tintColor = .black
     }
 }
 

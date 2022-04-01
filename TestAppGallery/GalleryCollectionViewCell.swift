@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class GalleryCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var photoImageView: PhotoImageView!
     
     override func prepareForReuse() {
